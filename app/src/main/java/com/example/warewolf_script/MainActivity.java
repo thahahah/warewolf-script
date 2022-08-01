@@ -4,24 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private long backKeyPressedTime = 0;
-    private Button button;
-    private RadioButton Doppelganger, warewolf, warewolf2, minion, freemason, seer, robber, troublemaker, drunk, insomniac;
-    boolean dp, w1, w2, m, free, se, rob, tb, dr, inso = false;
+    public Button button, reset;
+    public RadioButton Doppelganger, warewolf, minion, freemason, seer, robber, troublemaker, drunk, insomniac;
+    public int dp, w, m, free, se, rob, tb, dr, inso = 0;
     int min = 0;
-    SoundPool soundPool;
-    int soundID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         Doppelganger = findViewById(R.id.Doppelganger);
         warewolf = findViewById(R.id.warewolf);
-        warewolf2 = findViewById(R.id.warewolf2);
         minion = findViewById(R.id.minion);
         freemason = findViewById(R.id.freemason);
         seer = findViewById(R.id.seer);
@@ -38,73 +31,87 @@ public class MainActivity extends AppCompatActivity {
         troublemaker = findViewById(R.id.troublemaker);
         drunk = findViewById(R.id.drunk);
         insomniac = findViewById(R.id.insomniac);
-        button = findViewById(R.id.button);
+        button = findViewById(R.id.btn_finish);
+        reset = findViewById(R.id.reset);
 
+        //초기화
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();//인텐트 종료
+                Intent intent = getIntent(); //인텐트
+                startActivity(intent); //액티비티 열기
+                overridePendingTransition(0, 0);//인텐트 효과 없애기
+            }
+        });
+
+        //시작
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(Doppelganger.isChecked()){
-                    dp = true;
+                    dp = 1;
                     min += 1;
                 }
                 if(warewolf.isChecked()){
-                    w1 = true;
-                    min += 1;
-                }
-                if(warewolf2.isChecked()){
-                    w2 = true;
+                    w = 1;
                     min += 1;
                 }
                 if(minion.isChecked()){
-                    m = true;
+                    m = 1;
                     min += 1;
                 }
                 if(freemason.isChecked()){
-                    free = true;
+                    free = 1;
                     min += 1;
                 }
                 if(seer.isChecked()){
-                    se = true;
+                    se = 1;
                     min += 1;
                 }
                 if(robber.isChecked()){
-                    rob = true;
+                    rob = 1;
                     min += 1;
                 }
                 if(troublemaker.isChecked()){
-                    tb = true;
+                    tb = 1;
                     min += 1;
                 }
                 if(drunk.isChecked()){
-                    dr = true;
+                    dr = 1;
                     min += 1;
                 }
                 if(insomniac.isChecked()){
-                    inso = true;
+                    inso = 1;
                     min += 1;
                 }
                 if(min < 3){
                     Toast.makeText(getApplicationContext(), "직업은 최소 3개 이상을 선택해주세요.", Toast.LENGTH_SHORT).show();
-                    return;
+                    finish();//인텐트 종료
+                    overridePendingTransition(0, 0);//인텐트 효과 없애기
+                    Intent intent = getIntent(); //인텐트
+                    startActivity(intent); //액티비티 열기
+                    overridePendingTransition(0, 0);//인텐트 효과 없애기
                 }
                 if(min >= 3){
-                    setContentView(R.layout.activity_main);
-                    finish();
+                    Intent intent = new Intent(MainActivity.this, MainScript.class);
+                    intent.putExtra("dp",dp);
+                    intent.putExtra("w",w);
+                    intent.putExtra("m",m);
+                    intent.putExtra("free",free);
+                    intent.putExtra("se",se);
+                    intent.putExtra("rob",rob);
+                    intent.putExtra("tb",tb);
+                    intent.putExtra("dr",dr);
+                    intent.putExtra("inso",inso);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);//인텐트 효과 없애기
+
                 }
 
             }
         });
-
-    }
-
-    public void MainScript(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
-        soundID = soundPool.load(this,R.raw.chime1,1);
-
-        soundPool.play(soundID,1f,1f,0,0,1f);
 
     }
 
