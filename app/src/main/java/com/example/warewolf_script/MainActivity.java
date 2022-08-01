@@ -3,17 +3,25 @@ package com.example.warewolf_script;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private long backKeyPressedTime = 0;
-    RadioGroup radioGroup;
-    private RadioButton Doppelganger, warewolf, warewolf2, minion, freemason, seer, robber, troublemaker, drunk, insomniac;
     private Button button;
-    boolean dp, w1, w2, m, free, se, rob, tb, dr, insom = false;
+    private RadioButton Doppelganger, warewolf, warewolf2, minion, freemason, seer, robber, troublemaker, drunk, insomniac;
+    boolean dp, w1, w2, m, free, se, rob, tb, dr, inso = false;
+    int min = 0;
+    SoundPool soundPool;
+    int soundID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,38 +38,74 @@ public class MainActivity extends AppCompatActivity {
         troublemaker = findViewById(R.id.troublemaker);
         drunk = findViewById(R.id.drunk);
         insomniac = findViewById(R.id.insomniac);
+        button = findViewById(R.id.button);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        if(Doppelganger.isChecked()){
-            dp = true;
-        }
-        if(warewolf.isChecked()){
-            w1 = true;
-        }
-        if(warewolf2.isChecked()){
-            w2 = true;
-        }
-        if(minion.isChecked()){
-            m = true;
-        }
-        if(freemason.isChecked()){
-            free = true;
-        }
-        if(seer.isChecked()){
-            se = true;
-        }
-        if(robber.isChecked()){
-            rob = true;
-        }
-        if(troublemaker.isChecked()){
-            tb = true;
-        }
-        if(drunk.isChecked()){
-            dr = true;
-        }
-        if(insomniac.isChecked()){
-            insom = true;
-        }
+                if(Doppelganger.isChecked()){
+                    dp = true;
+                    min += 1;
+                }
+                if(warewolf.isChecked()){
+                    w1 = true;
+                    min += 1;
+                }
+                if(warewolf2.isChecked()){
+                    w2 = true;
+                    min += 1;
+                }
+                if(minion.isChecked()){
+                    m = true;
+                    min += 1;
+                }
+                if(freemason.isChecked()){
+                    free = true;
+                    min += 1;
+                }
+                if(seer.isChecked()){
+                    se = true;
+                    min += 1;
+                }
+                if(robber.isChecked()){
+                    rob = true;
+                    min += 1;
+                }
+                if(troublemaker.isChecked()){
+                    tb = true;
+                    min += 1;
+                }
+                if(drunk.isChecked()){
+                    dr = true;
+                    min += 1;
+                }
+                if(insomniac.isChecked()){
+                    inso = true;
+                    min += 1;
+                }
+                if(min < 3){
+                    Toast.makeText(getApplicationContext(), "직업은 최소 3개 이상을 선택해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(min >= 3){
+                    setContentView(R.layout.activity_main);
+                    finish();
+                }
+
+            }
+        });
+
+    }
+
+    public void MainScript(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        soundID = soundPool.load(this,R.raw.chime1,1);
+
+        soundPool.play(soundID,1f,1f,0,0,1f);
+
     }
 
     @Override
