@@ -127,7 +127,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationX="115dp" />
+                android:translationX="210dp" />
 
             <Button
                 android:id="@+id/reset"
@@ -140,7 +140,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationX="210dp" />
+                android:translationX="115dp" />
         </FrameLayout>
 
     </LinearLayout>

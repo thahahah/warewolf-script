@@ -48,6 +48,8 @@ public class MainScript extends AppCompatActivity {
 
 
         //시작
+        m1 = 0;
+        inso1 = 0;
         bell.start();
 
         //종료
@@ -85,11 +87,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.chime1);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             voice11.start();
         }
     };
@@ -100,11 +108,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.voice1);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             if (dp == 1) {
                 voice_dp.start();
                 dp = 0;
@@ -143,25 +157,37 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dp);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
     //w
-    CountDownTimer voice_w1 = new CountDownTimer(8000, 8000) {
+    CountDownTimer voice_w1 = new CountDownTimer(10000, 10000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.w);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -171,25 +197,37 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.m);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock2.start();
         }
     };
     //도플 하수인
-    CountDownTimer voice_dp_m = new CountDownTimer(15000, 15000) {
+    CountDownTimer voice_dp_m = new CountDownTimer(14000, 14000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dp_m);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock2.start();
         }
     };
@@ -199,11 +237,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.free);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock2.start();
         }
     };
@@ -213,11 +257,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.se);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -227,11 +277,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.rob);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -241,11 +297,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.tb);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -255,11 +317,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dr);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -269,11 +337,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.inso);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -283,11 +357,17 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dp_inso);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
         }
 
         @Override
         public void onFinish() {
-            mediaPlayer.reset();
+            mediaPlayer = null;
             clock1.start();
         }
     };
@@ -298,6 +378,12 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("" + count--);
         }
@@ -307,6 +393,7 @@ public class MainScript extends AppCompatActivity {
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("");
             count = 10;
+            mediaPlayer = null;
             if (w ==1) {
                 voice_w1.start();
                 w = 0;
@@ -317,7 +404,6 @@ public class MainScript extends AppCompatActivity {
             } else if (dp_m == m1){
                     voice_dp_m.start();
                     dp_m = 0;
-                    m1 = 0;
             } else if (free == 1) {
                 voice_free.start();
                 free = 0;
@@ -335,13 +421,12 @@ public class MainScript extends AppCompatActivity {
                 dr = 0;
             } else if (inso == 1) {
                 voice_inso.start();
-                inso1 = 1;
                 inso = 0;
+                inso1 = 1;
             } else if (dp_inso == inso1){
-                    voice_dp_inso.start();
-                    dp_inso = 0;
+                voice_dp_inso.start();
+                dp_inso = 0;
             } else {
-                inso1 = 0;
                 voice_end.start();
             }
         }
@@ -353,6 +438,12 @@ public class MainScript extends AppCompatActivity {
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("" + count1--);
         }
@@ -361,12 +452,14 @@ public class MainScript extends AppCompatActivity {
         public void onFinish() {
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("");
+            mediaPlayer = null;
             count1 = 3;
             if (w ==1) {
                 voice_w1.start();
                 w = 0;
             } else if (m == 1) {
                 voice_m.start();
+                m1=1;
                 m = 0;
             } else if (dp_m == m1){
                 voice_dp_m.start();
@@ -388,31 +481,39 @@ public class MainScript extends AppCompatActivity {
                 dr = 0;
             } else if (inso == 1) {
                 voice_inso.start();
-                inso1 = 1;
                 inso = 0;
+                inso1 = 1;
             } else if (dp_inso == inso1){
                 voice_dp_inso.start();
                 dp_inso = 0;
             } else {
-                inso1 = 0;
                 voice_end.start();
             }
         }
 
     };
     //낮이 되었습니다
-    CountDownTimer voice_end = new CountDownTimer(5000, 5000) {
+    CountDownTimer voice_end = new CountDownTimer(3000, 3000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.game_end);
             mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
+
         }
 
         @Override
         public void onFinish() {
+            mediaPlayer = null;
             Intent intent = new Intent(MainScript.this, MainActivity.class);
             startActivity(intent);
             System.exit(0);
         }
     };
+
 }
