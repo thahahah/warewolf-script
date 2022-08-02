@@ -1,5 +1,6 @@
 package com.example.warewolf_script;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -24,9 +25,9 @@ public class MainScript extends AppCompatActivity {
     public Button btn_finish;
     private MediaPlayer mediaPlayer;
     int count = 10;
+    int count1 = 3;
     CountDownTimer countDownTimer;
-    int dp, w, m, free, se, rob, tb, dr, inso = 0;
-    int timer;
+    int dp, w, m, dp_m, m1, free, se, rob, tb, dr, inso, dp_inso, inso1 = 0;
 
 
     @Override
@@ -107,6 +108,8 @@ public class MainScript extends AppCompatActivity {
             if (dp == 1) {
                 voice_dp.start();
                 dp = 0;
+                dp_m = 1;
+                dp_inso = 1;
             } else if (w == 1) {
                 voice_w1.start();
                 w = 0;
@@ -135,7 +138,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //dp
-    CountDownTimer voice_dp = new CountDownTimer(14000, 14000) {
+    CountDownTimer voice_dp = new CountDownTimer(16000, 16000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dp);
@@ -219,7 +222,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //강도
-    CountDownTimer voice_rob = new CountDownTimer(7000, 7000) {
+    CountDownTimer voice_rob = new CountDownTimer(8000, 8000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.rob);
@@ -233,7 +236,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //말썽쟁이
-    CountDownTimer voice_tb = new CountDownTimer(6000, 6000) {
+    CountDownTimer voice_tb = new CountDownTimer(7000, 7000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.tb);
@@ -261,7 +264,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //불면증환자
-    CountDownTimer voice_inso = new CountDownTimer(6000, 6000) {
+    CountDownTimer voice_inso = new CountDownTimer(7000, 7000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.inso);
@@ -275,7 +278,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //도플불면증
-    CountDownTimer voice_dp_inso = new CountDownTimer(7000, 7000) {
+    CountDownTimer voice_dp_inso = new CountDownTimer(8000, 8000) {
         @Override
         public void onTick(long l) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.dp_inso);
@@ -286,14 +289,122 @@ public class MainScript extends AppCompatActivity {
         public void onFinish() {
             mediaPlayer.reset();
             clock1.start();
-            return;
         }
     };
-    //낮이 되었습니다
-    CountDownTimer end = new CountDownTimer(2500, 2500) {
+    //시계 소리
+    CountDownTimer clock1 = new CountDownTimer(11000, 1000) {
+        @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long l) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.end);
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
+            mediaPlayer.start();
+            TextView textView = (TextView) findViewById(R.id.timer);
+            textView.setText("" + count--);
+        }
+
+        @Override
+        public void onFinish() {
+            TextView textView = (TextView) findViewById(R.id.timer);
+            textView.setText("");
+            count = 10;
+            if (w ==1) {
+                voice_w1.start();
+                w = 0;
+            } else if (m == 1) {
+                voice_m.start();
+                m1=1;
+                m=0;
+            } else if (dp_m == m1){
+                    voice_dp_m.start();
+                    dp_m = 0;
+                    m1 = 0;
+            } else if (free == 1) {
+                voice_free.start();
+                free = 0;
+            } else if (se == 1) {
+                voice_se.start();
+                se = 0;
+            } else if (rob == 1) {
+                voice_rob.start();
+                rob = 0;
+            } else if (tb == 1) {
+                voice_tb.start();
+                tb = 0;
+            } else if (dr == 1) {
+                voice_dr.start();
+                dr = 0;
+            } else if (inso == 1) {
+                voice_inso.start();
+                inso1 = 1;
+                inso = 0;
+            } else if (dp_inso == inso1){
+                    voice_dp_inso.start();
+                    dp_inso = 0;
+            } else {
+                inso1 = 0;
+                voice_end.start();
+            }
+        }
+
+    };
+    CountDownTimer clock2 = new CountDownTimer(4000, 1000) {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onTick(long l) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
+            mediaPlayer.start();
+            TextView textView = (TextView) findViewById(R.id.timer);
+            textView.setText("" + count1--);
+        }
+
+        @Override
+        public void onFinish() {
+            TextView textView = (TextView) findViewById(R.id.timer);
+            textView.setText("");
+            count1 = 3;
+            if (w ==1) {
+                voice_w1.start();
+                w = 0;
+            } else if (m == 1) {
+                voice_m.start();
+                m = 0;
+            } else if (dp_m == m1){
+                voice_dp_m.start();
+                dp_m = 0;
+            } else if (free == 1) {
+                voice_free.start();
+                free = 0;
+            } else if (se == 1) {
+                voice_se.start();
+                se = 0;
+            } else if (rob == 1) {
+                voice_rob.start();
+                rob = 0;
+            } else if (tb == 1) {
+                voice_tb.start();
+                tb = 0;
+            } else if (dr == 1) {
+                voice_dr.start();
+                dr = 0;
+            } else if (inso == 1) {
+                voice_inso.start();
+                inso1 = 1;
+                inso = 0;
+            } else if (dp_inso == inso1){
+                voice_dp_inso.start();
+                dp_inso = 0;
+            } else {
+                inso1 = 0;
+                voice_end.start();
+            }
+        }
+
+    };
+    //낮이 되었습니다
+    CountDownTimer voice_end = new CountDownTimer(5000, 5000) {
+        @Override
+        public void onTick(long l) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.game_end);
             mediaPlayer.start();
         }
 
@@ -303,113 +414,5 @@ public class MainScript extends AppCompatActivity {
             startActivity(intent);
             System.exit(0);
         }
-    };
-    //시계 소리
-    CountDownTimer clock1 = new CountDownTimer(11000, 1000) {
-        @Override
-        public void onTick(long l) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
-            mediaPlayer.start();
-            TextView textView = (TextView) findViewById(R.id.timer);
-            textView.setText("" + count--);
-        }
-
-        @Override
-        public void onFinish() {
-            TextView textView = (TextView) findViewById(R.id.timer);
-            textView.setText("");
-            count = 10;
-            if (dp ==1) {
-                voice_dp.start();
-                dp += 1;
-            } else if (w ==1) {
-                voice_w1.start();
-                w = 0;
-            } else if (m == 1) {
-                voice_m.start();
-                m = 0;
-            } else if (dp == 2){
-                voice_dp_m.start();
-                dp += 1;
-            } else if (free == 1) {
-                voice_free.start();
-                free = 0;
-            } else if (se == 1) {
-                voice_se.start();
-                se = 0;
-            } else if (rob == 1) {
-                voice_rob.start();
-                rob = 0;
-            } else if (tb == 1) {
-                voice_tb.start();
-                tb = 0;
-            } else if (dr == 1) {
-                voice_dr.start();
-                dr = 0;
-            } else if (inso == 1) {
-                voice_inso.start();
-                inso = 0;
-            } else if (dp == 3){
-                voice_dp.start();
-                dp = 0;
-            } else {
-                end.start();
-            }
-        }
-
-    };
-    CountDownTimer clock2 = new CountDownTimer(4000, 1000) {
-        @Override
-        public void onTick(long l) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.clock1);
-            mediaPlayer.start();
-            count = 3;
-            TextView textView = (TextView) findViewById(R.id.timer);
-            textView.setText("" + count--);
-        }
-
-        @Override
-        public void onFinish() {
-            TextView textView = (TextView) findViewById(R.id.timer);
-            textView.setText("");
-            count = 10;
-            if (dp ==1) {
-                voice_dp.start();
-                dp += 1;
-            } else if (w ==1) {
-                voice_w1.start();
-                w = 0;
-            } else if (m == 1) {
-                voice_m.start();
-                m = 0;
-            } else if (dp == 2){
-                voice_dp_m.start();
-                dp += 1;
-            } else if (free == 1) {
-                voice_free.start();
-                free = 0;
-            } else if (se == 1) {
-                voice_se.start();
-                se = 0;
-            } else if (rob == 1) {
-                voice_rob.start();
-                rob = 0;
-            } else if (tb == 1) {
-                voice_tb.start();
-                tb = 0;
-            } else if (dr == 1) {
-                voice_dr.start();
-                dr = 0;
-            } else if (inso == 1) {
-                voice_inso.start();
-                inso = 0;
-            } else if (dp == 3){
-                voice_dp.start();
-                dp = 0;
-            } else {
-                end.start();
-            }
-        }
-
     };
 }

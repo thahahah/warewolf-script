@@ -37,7 +37,8 @@
             android:layout_weight="0"
             android:text="도플갱어"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:contextClickable="true"/>
 
         <RadioButton
             android:id="@+id/warewolf"
