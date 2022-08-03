@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private long backKeyPressedTime = 0;
     public Button button, reset;
     public RadioButton Doppelganger, warewolf, minion, freemason, seer, robber, troublemaker, drunk, insomniac;
-    public int dp, w, m, free, se, rob, tb, dr, inso = 0;
+    public int dp, w, m, m1, free, se, rob, tb, dr, inso, inso1 = 0;
     int min = 0;
 
     @Override
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if(Doppelganger.isChecked()){
                     dp = 1;
+                    m1 = 1;
+                    inso1 = 1;
                     min += 1;
                 }
                 if(warewolf.isChecked()){
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 if(minion.isChecked()){
                     m = 1;
                     min += 1;
+                } else{
+                    m1 = 0;
                 }
                 if(freemason.isChecked()){
                     free = 1;
@@ -85,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 if(insomniac.isChecked()){
                     inso = 1;
                     min += 1;
+                } else {
+                    inso1 = 0;
                 }
                 if(min < 3){
                     Toast.makeText(getApplicationContext(), "직업은 최소 3개 이상을 선택해주세요.", Toast.LENGTH_SHORT).show();
@@ -99,12 +105,14 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("dp",dp);
                     intent.putExtra("w",w);
                     intent.putExtra("m",m);
+                    intent.putExtra("m1",m1);
                     intent.putExtra("free",free);
                     intent.putExtra("se",se);
                     intent.putExtra("rob",rob);
                     intent.putExtra("tb",tb);
                     intent.putExtra("dr",dr);
                     intent.putExtra("inso",inso);
+                    intent.putExtra("inso1",inso1);
                     startActivity(intent);
                     overridePendingTransition(0, 0);//인텐트 효과 없애기
 

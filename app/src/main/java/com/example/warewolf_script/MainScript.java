@@ -27,7 +27,7 @@ public class MainScript extends AppCompatActivity {
     int count = 10;
     int count1 = 3;
     CountDownTimer countDownTimer;
-    int dp, w, m, dp_m, m1, free, se, rob, tb, dr, inso, dp_inso, inso1 = 0;
+    int dp, w, m, m1, free, se, rob, tb, dr, inso, inso1 = 0;
 
 
     @Override
@@ -39,17 +39,17 @@ public class MainScript extends AppCompatActivity {
         dp = intent.getIntExtra("dp", 0);
         w = intent.getIntExtra("w", 0);
         m = intent.getIntExtra("m", 0);
+        m1 = intent.getIntExtra("m1", 0);
         free = intent.getIntExtra("free", 0);
         se = intent.getIntExtra("se", 0);
         rob = intent.getIntExtra("rob", 0);
         tb = intent.getIntExtra("tb", 0);
         dr = intent.getIntExtra("dr", 0);
         inso = intent.getIntExtra("inso", 0);
+        inso1 = intent.getIntExtra("inso1", 0);
 
 
         //시작
-        m1 = 0;
-        inso1 = 0;
         bell.start();
 
         //종료
@@ -122,32 +122,38 @@ public class MainScript extends AppCompatActivity {
             if (dp == 1) {
                 voice_dp.start();
                 dp = 0;
-                dp_m = 1;
-                dp_inso = 1;
-            } else if (w == 1) {
+            } else if (w ==1) {
                 voice_w1.start();
                 w = 0;
-            } else if(m == 1){
+            } else if (m == 1) {
                 voice_m.start();
-                m = 0;
-            }else if(free == 1){
+                m=0;
+            } else if (m1 == 1){
+                voice_dp_m.start();
+                m1 = 0;
+            } else if (free == 1) {
                 voice_free.start();
                 free = 0;
-            }else if(se == 1){
+            } else if (se == 1) {
                 voice_se.start();
                 se = 0;
-            }else if(rob ==1){
+            } else if (rob == 1) {
                 voice_rob.start();
                 rob = 0;
-            }else if(tb==1){
+            } else if (tb == 1) {
                 voice_tb.start();
                 tb = 0;
-            }else if(dr==1){
+            } else if (dr == 1) {
                 voice_dr.start();
                 dr = 0;
-            }else if(inso==1){
+            } else if (inso == 1) {
                 voice_inso.start();
                 inso = 0;
+            } else if (inso1 == 1){
+                voice_dp_inso.start();
+                inso1 = 0;
+            } else {
+                voice_end.start();
             }
         }
     };
@@ -372,7 +378,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //시계 소리
-    CountDownTimer clock1 = new CountDownTimer(11000, 1000) {
+    CountDownTimer clock1 = new CountDownTimer(6000, 1000) {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long l) {
@@ -394,16 +400,18 @@ public class MainScript extends AppCompatActivity {
             textView.setText("");
             count = 10;
             mediaPlayer = null;
-            if (w ==1) {
+            if (dp == 1) {
+                voice_dp.start();
+                dp = 0;
+            } else if (w ==1) {
                 voice_w1.start();
                 w = 0;
             } else if (m == 1) {
                 voice_m.start();
-                m1=1;
                 m=0;
-            } else if (dp_m == m1){
-                    voice_dp_m.start();
-                    dp_m = 0;
+            } else if (m1 == 1){
+                voice_dp_m.start();
+                m1 = 0;
             } else if (free == 1) {
                 voice_free.start();
                 free = 0;
@@ -422,10 +430,9 @@ public class MainScript extends AppCompatActivity {
             } else if (inso == 1) {
                 voice_inso.start();
                 inso = 0;
-                inso1 = 1;
-            } else if (dp_inso == inso1){
+            } else if (inso1 == 1){
                 voice_dp_inso.start();
-                dp_inso = 0;
+                inso1 = 0;
             } else {
                 voice_end.start();
             }
@@ -454,16 +461,18 @@ public class MainScript extends AppCompatActivity {
             textView.setText("");
             mediaPlayer = null;
             count1 = 3;
-            if (w ==1) {
+            if (dp == 1) {
+                voice_dp.start();
+                dp = 0;
+            } else if (w ==1) {
                 voice_w1.start();
                 w = 0;
             } else if (m == 1) {
                 voice_m.start();
-                m1=1;
-                m = 0;
-            } else if (dp_m == m1){
+                m=0;
+            } else if (m1 == 1){
                 voice_dp_m.start();
-                dp_m = 0;
+                m1 = 0;
             } else if (free == 1) {
                 voice_free.start();
                 free = 0;
@@ -482,10 +491,9 @@ public class MainScript extends AppCompatActivity {
             } else if (inso == 1) {
                 voice_inso.start();
                 inso = 0;
-                inso1 = 1;
-            } else if (dp_inso == inso1){
+            } else if (inso1 == 1){
                 voice_dp_inso.start();
-                dp_inso = 0;
+                inso1 = 0;
             } else {
                 voice_end.start();
             }
