@@ -398,7 +398,7 @@ public class MainScript extends AppCompatActivity {
         public void onFinish() {
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("");
-            count = 10;
+            count = 5;
             mediaPlayer = null;
             if (dp == 1) {
                 voice_dp.start();
