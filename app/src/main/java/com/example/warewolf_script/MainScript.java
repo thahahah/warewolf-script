@@ -24,7 +24,7 @@ public class MainScript extends AppCompatActivity {
     private long backKeyPressedTime = 0;
     public Button btn_finish;
     private MediaPlayer mediaPlayer;
-    int count = 5;
+    int count = 8;
     int count1 = 3;
     CountDownTimer countDownTimer;
     int dp, w, m, m1, free, se, rob, tb, dr, inso, inso1 = 0;
@@ -378,7 +378,7 @@ public class MainScript extends AppCompatActivity {
         }
     };
     //시계 소리
-    CountDownTimer clock1 = new CountDownTimer(6000, 1000) {
+    CountDownTimer clock1 = new CountDownTimer(9000, 1000) {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long l) {
@@ -398,7 +398,7 @@ public class MainScript extends AppCompatActivity {
         public void onFinish() {
             TextView textView = (TextView) findViewById(R.id.timer);
             textView.setText("");
-            count = 5;
+            count = 8;
             mediaPlayer = null;
             if (dp == 1) {
                 voice_dp.start();
