@@ -24,7 +24,7 @@ public class MainScript extends AppCompatActivity {
     private long backKeyPressedTime = 0;
     public Button btn_finish;
     private MediaPlayer mediaPlayer;
-    int count = 10;
+    int count = 5;
     int count1 = 3;
     CountDownTimer countDownTimer;
     int dp, w, m, m1, free, se, rob, tb, dr, inso, inso1 = 0;
